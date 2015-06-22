@@ -56,22 +56,6 @@ class JSONHelperTests: XCTestCase {
     case One = 1
   }
 
-  func testOptionalString() {
-    var property: String?
-    property <-- dummyResponse["string"]
-    XCTAssertEqual(property!, "a", "String? property should equal 'a'")
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertNil(property, "String? property should equal nil after invalid assignment")
-  }
-
-  func testString() {
-    var property = "b"
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertEqual(property, "b", "String property should have the default value 'b'")
-    property <-- dummyResponse["string"]
-    XCTAssertEqual(property, "a", "String property should equal 'a'")
-  }
-
   func testOptionalInt() {
     var property: Int?
     property <-- dummyResponse["int"]
