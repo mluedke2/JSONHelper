@@ -17,12 +17,12 @@ class StringTests: XCTestCase {
   func testStringToStringConversion() {
     var value: String?
     value <-- (testString as Any)
-    XCTAssertEqual(value!, testString, "String value to string deserialization failed")
+    XCTAssertEqual(value!, testString, "String to String conversion failed")
   }
 
   func testIntToStringConversion() {
     var value: String?
     value <-- (testInt as Any)
-    XCTAssertEqual(value!, "\(testInt)", "Int value to string deserialization failed")
+    XCTAssertEqual(value!, "\(testInt)", "Int to String conversion failed")
   }
 }
