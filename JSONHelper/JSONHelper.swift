@@ -34,18 +34,18 @@ import Foundation
 /// type of object as a value.
 public typealias JSONDictionary = [String: AnyObject]
 
-/// TODOC
+/// An object that can attempt to convert values of unknown types to its own type.
 public protocol Convertible {
 
   /// TODOC
   static func convertFromValue(value: Any?) -> Self?
 }
 
-/// Returns nil if given object is of type NSNull.
+/// Filters out values of type NSNull.
 ///
-/// :param: object Object to convert.
+/// :param: value Value to check.
 ///
-/// :returns: nil if object is of type NSNull, else returns the object itself.
+/// :returns: nil if value is of type NSNull, else the value is returned as-is.
 public func convertToNilIfNull(value: Any?) -> Any? {
   if value is NSNull {
     return nil
@@ -55,11 +55,15 @@ public func convertToNilIfNull(value: Any?) -> Any? {
 
 /// TODOC
 public protocol Deserializable {
+
+  /// TODOC
   init(jsonDictionary: JSONDictionary)
 }
 
 /// TODOC
 public protocol Serializable {
+
+  /// TODOC
   func toJSONDictionary() -> JSONDictionary
 }
 
@@ -98,6 +102,31 @@ public func <-- <C: Convertible, T>(inout lhs: [C]?, rhs: T?) -> [C]? {
 
 public func <-- <C: Convertible, T>(inout lhs: [C], rhs: T?) -> [C] {
   var newValue: [C]?
+  newValue <-- rhs
+  if let newValue = newValue {
+    lhs = newValue
+  }
+  return lhs
+}
+
+public func <-- <C: Convertible, T>(inout lhs: [String: C]?, rhs: T?) -> [String: C]? {
+  if let dictionary = rhs as? JSONDictionary {
+    lhs = [String: C]()
+    for (key, value) in dictionary {
+      var convertedValue: C?
+      convertedValue <-- value
+      if let convertedValue = convertedValue {
+        lhs?[key] = convertedValue
+      }
+    }
+  } else {
+    lhs = nil
+  }
+  return lhs
+}
+
+public func <-- <C: Convertible, T>(inout lhs: [String: C], rhs: T?) -> [String: C] {
+  var newValue: [String: C]?
   newValue <-- rhs
   if let newValue = newValue {
     lhs = newValue
