@@ -12,9 +12,6 @@ import JSONHelper
 
 class JSONHelperTests: XCTestCase {
   let dummyResponse: JSONDictionary = [
-    "string": "a",
-    "int": 1,
-    "int_string": "1",
     "bool": true,
     "date": "2014-09-19",
     "url": "http://github.com/",
@@ -54,34 +51,6 @@ class JSONHelperTests: XCTestCase {
   enum EnumTest: Int {
     case Zero = 0
     case One = 1
-  }
-
-  func testOptionalInt() {
-    var property: Int?
-    property <-- dummyResponse["int"]
-    XCTAssertEqual(property!, 1, "Int? property should equal 1")
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertNil(property, "Int? property should equal nil after invalid assignment")
-  }
-
-  func testInt() {
-    var property = 2
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertEqual(property, 2, "Int property should have the default value 2")
-    property <-- dummyResponse["int"]
-    XCTAssertEqual(property, 1, "Int property should equal 1")
-  }
-
-  func testStringToOptionalInt() {
-    var number: Int?
-    number <-- dummyResponse["int_string"]
-    XCTAssertEqual(number!, 1, "Strings containing numbers should successfully deserialize into optional Ints.")
-  }
-
-  func testStringToInt() {
-    var number = 0
-    number <-- dummyResponse["int_string"]
-    XCTAssertEqual(number, 1, "Strings containing numbers should successfully deserialize into Ints.")
   }
 
   func testOptionalBool() {
