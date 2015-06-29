@@ -37,7 +37,7 @@ extension Bool: Convertible {
       if let boolValue = value as? Bool {
         return boolValue
       } else if let intValue = value as? Int {
-        return intValue == 0
+        return intValue > 0
       } else if let stringValue = value as? String {
         switch stringValue.lowercaseString {
         case "true", "t":

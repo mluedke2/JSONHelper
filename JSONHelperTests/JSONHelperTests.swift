@@ -12,7 +12,6 @@ import JSONHelper
 
 class JSONHelperTests: XCTestCase {
   let dummyResponse: JSONDictionary = [
-    "bool": true,
     "date": "2014-09-19",
     "url": "http://github.com/",
     "stringArray": ["a", "b", "c"],
@@ -51,22 +50,6 @@ class JSONHelperTests: XCTestCase {
   enum EnumTest: Int {
     case Zero = 0
     case One = 1
-  }
-
-  func testOptionalBool() {
-    var property: Bool?
-    property <-- dummyResponse["bool"]
-    XCTAssertEqual(property!, true, "Bool? property should equal true")
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertNil(property, "Bool? property should equal nil after invalid assignment")
-  }
-
-  func testBool() {
-    var property = true
-    property <-- dummyResponse["invalidKey"]
-    XCTAssertEqual(property, true, "Bool property should have the default value true")
-    property <-- dummyResponse["bool"]
-    XCTAssertEqual(property, true, "Bool property should equal true")
   }
 
   func testOptionalNSDate() {

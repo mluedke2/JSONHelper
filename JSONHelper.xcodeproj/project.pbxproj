@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F024AE11B4127C900EF50C4 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F024AE01B4127C900EF50C4 /* IntTests.swift */; };
+		5F024AE31B412BA900EF50C4 /* BoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F024AE21B412BA900EF50C4 /* BoolTests.swift */; };
 		5FAD076A1A70F2FC00C4D09E /* JSONHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FAD07691A70F2FC00C4D09E /* JSONHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FAD07701A70F2FC00C4D09E /* JSONHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAD07641A70F2FC00C4D09E /* JSONHelper.framework */; };
 		5FAD07771A70F2FC00C4D09E /* JSONHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAD07761A70F2FC00C4D09E /* JSONHelperTests.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		5F024AE01B4127C900EF50C4 /* IntTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTests.swift; sourceTree = "<group>"; };
+		5F024AE21B412BA900EF50C4 /* BoolTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolTests.swift; sourceTree = "<group>"; };
 		5F0E6F961ACDE06400D92679 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FAD07641A70F2FC00C4D09E /* JSONHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSONHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FAD07681A70F2FC00C4D09E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				5FAD07761A70F2FC00C4D09E /* JSONHelperTests.swift */,
 				5FB9D4DF1B38007C00EF50C4 /* StringTests.swift */,
 				5F024AE01B4127C900EF50C4 /* IntTests.swift */,
+				5F024AE21B412BA900EF50C4 /* BoolTests.swift */,
 				5FAD07741A70F2FC00C4D09E /* Supporting Files */,
 			);
 			path = JSONHelperTests;
@@ -472,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F024AE11B4127C900EF50C4 /* IntTests.swift in Sources */,
+				5F024AE31B412BA900EF50C4 /* BoolTests.swift in Sources */,
 				5FB9D4E01B38007C00EF50C4 /* StringTests.swift in Sources */,
 				5FAD07771A70F2FC00C4D09E /* JSONHelperTests.swift in Sources */,
 			);
