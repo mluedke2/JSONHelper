@@ -12,7 +12,7 @@ import JSONHelper
 
 class StringTests: XCTestCase {
   let testString = "test"
-  let testInt = 1
+  let testIntAndResult = (1, "1")
 
   func testStringToStringConversion() {
     var value: String?
@@ -22,7 +22,7 @@ class StringTests: XCTestCase {
 
   func testIntToStringConversion() {
     var value: String?
-    value <-- (testInt as Any)
-    XCTAssertEqual(value!, "\(testInt)", "Int to String conversion failed")
+    value <-- (testIntAndResult.0 as Any)
+    XCTAssertEqual(value!, testIntAndResult.1, "Int to String conversion failed")
   }
 }
