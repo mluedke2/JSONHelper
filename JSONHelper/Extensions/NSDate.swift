@@ -35,15 +35,15 @@ extension NSDate: Convertible {
 
   public static func convertFromValue(value: Any?) -> Self? {
     if let value: Any = value {
-      if let
+      if let unixTimeStamp = value as? NSTimeInterval {
+        return self(timeIntervalSince1970: unixTimeStamp)
+      } else if let
         jsonDictionaryValueAndFormatTuple = value as? (AnyObject?, String),
         stringValue = jsonDictionaryValueAndFormatTuple.0 as? String {
           sharedFormatter.dateFormat = jsonDictionaryValueAndFormatTuple.1
           if let convertedDate = sharedFormatter.dateFromString(stringValue) {
             return self(timeIntervalSince1970: convertedDate.timeIntervalSince1970)
           }
-      } else if let unixTimeStamp = value as? NSTimeInterval {
-        return self(timeIntervalSince1970: unixTimeStamp)
       } else if let
         jsonDictionaryValueAndConversionClosureTuple = value as? (AnyObject?, (value: AnyObject) -> NSDate?),
         jsonDictionaryValue: AnyObject = jsonDictionaryValueAndConversionClosureTuple.0,
