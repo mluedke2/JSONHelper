@@ -39,9 +39,9 @@ infix operator <-- { associativity right precedence 150 }
 
 /// Returns nil if given object is of type NSNull.
 ///
-/// :param: object Object to convert.
+/// - parameter object: Object to convert.
 ///
-/// :returns: nil if object is of type NSNull, else returns the object itself.
+/// - returns: nil if object is of type NSNull, else returns the object itself.
 private func convertToNilIfNull(object: AnyObject?) -> AnyObject? {
   if object is NSNull {
     return nil
@@ -65,7 +65,7 @@ public func <-- <T>(inout property: T?, value: AnyObject?) -> T? {
       switch property {
       case is Int?:
         if unwrappedValue is String {
-          if let intValue = "\(unwrappedValue)".toInt() {
+          if let intValue = Int("\(unwrappedValue)") {
             newValue = intValue as? T
           }
         }
@@ -509,9 +509,12 @@ public func <-- <T: RawRepresentable>(inout property: T, value: AnyObject?) -> T
 // MARK: JSON String Deserialization
 
 private func dataStringToObject(dataString: String) -> AnyObject? {
-  var data: NSData = dataString.dataUsingEncoding(NSUTF8StringEncoding)!
-  var error: NSError?
-  return NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
+  let data: NSData = dataString.dataUsingEncoding(NSUTF8StringEncoding)!
+  do {
+    return try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
+  } catch _ {
+    return nil
+  }
 }
 
 public func <-- <T: Deserializable>(inout instance: T?, dataString: String) -> T? {

@@ -198,7 +198,7 @@ class JSONHelperTests: XCTestCase {
   }
   
   func testJSONStringArrayParsing() {
-    var jsonString = "[{\"name\": \"I am \"},{\"name\": \"Groot!\"}]"
+    let jsonString = "[{\"name\": \"I am \"},{\"name\": \"Groot!\"}]"
     var people = [Person]()
     var areYouGroot = ""
     
@@ -212,7 +212,7 @@ class JSONHelperTests: XCTestCase {
   }
   
   func testJSONStringMapParsing() {
-    var jsonString = "{\"person one\": {\"name\": \"I am \"}, \"person two\": {\"name\": \"Groot!\"}}"
+    let jsonString = "{\"person one\": {\"name\": \"I am \"}, \"person two\": {\"name\": \"Groot!\"}}"
     var people = [String:Person]()
     var areYouGroot = ""
     var keys = ""
